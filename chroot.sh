@@ -5,20 +5,15 @@ echo "Carregando ambiente dentro do chroot..."
 source /etc/profile
 export PS1="(chroot) $PS1"
 
-echo "### Configuração do Paludis ###"
-cd /etc/paludis
-vim bashrc
-vim *conf
-
 echo "Sincronizando pacotes..."
 cave sync
 
 echo "### Instalação do Kernel ###"
 echo "Baixando kernel mais recente..."
 cd /usr/src
-curl -O https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.tar.xz
-tar xJf linux-6.6.tar.xz
-cd linux-6.6
+curl -O https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.13.4.tar.xz
+tar xJf linux-6.13.4.tar.xz
+cd linux-6.13.4
 
 echo "Configurando o Kernel..."
 make nconfig
